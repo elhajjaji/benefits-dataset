@@ -60,6 +60,53 @@ Créer un serveur avec:
 - `src.permis`
 - `src.prestation`
 
+## Schéma MCD
+
+```mermaid
+erDiagram
+	INDIVIDU ||--o{ DOSSIER : possede
+	INDIVIDU ||--o{ PERMIS : detient
+	INDIVIDU ||--o{ PRESTATION : beneficie
+
+	INDIVIDU {
+		int id PK
+		varchar nom
+		varchar prenom
+		varchar email
+		char sexe
+		date date_naissance
+		date date_deces
+		varchar navs
+		varchar numero_individu UK
+	}
+
+	DOSSIER {
+		int id PK
+		varchar numero_dossier
+		varchar numero_individu FK
+		date date_debut
+		date date_fin
+	}
+
+	PERMIS {
+		int id PK
+		varchar numero_individu FK
+		varchar permis
+		date date_debut
+		date date_fin
+	}
+
+	PRESTATION {
+		int id PK
+		varchar numero_individu FK
+		date date_debut_prestation
+		date date_prestation
+		varchar type_prestation
+		int montant_prestation
+		date date_fin_prestation
+	}
+```
+
 ## Rechargement complet des données
 
 L’import CSV ne se fait qu’à l’initialisation du volume Postgres.
