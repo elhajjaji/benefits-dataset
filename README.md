@@ -22,7 +22,7 @@ Stack Docker pour charger un jeu de données dans PostgreSQL et l’explorer via
 ## Démarrage rapide
 
 ```bash
-docker compose up -d --build
+docker compose -p user_name up -d --build
 ```
 
 ## Accès
@@ -115,7 +115,7 @@ Pour repartir de zéro:
 
 ```bash
 docker compose down -v
-docker compose up -d --build
+docker compose -p user_name up -d --build
 ```
 
 ## Arrêt
